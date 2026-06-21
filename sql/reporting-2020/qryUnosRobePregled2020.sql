@@ -1,15 +1,15 @@
 SELECT
-    u.IDUnos,
-    u.IDArtikal,
-    u.Kolicina,
-    u.ProdajnaCena,
-    u.TipUnosa,
-    u.IDDnevnik,
-    d.Datum,
-    d.TipPromene,
-    d.BrojKalkulacije,
-    d.IDObjekat
-FROM tblUnosRobe AS u
-INNER JOIN qryDnevnikPregled2020 AS d
-    ON u.IDDnevnik = d.IDDnevnik
-WHERE Nz(d.BrojKalkulacije, '') <> 'KOREKCIJA';
+    unos.IDUnos,
+    unos.IDArtikal,
+    unos.Kolicina,
+    unos.ProdajnaCena,
+    unos.TipUnosa,
+    unos.IDDnevnik AS IDDnevnikUnosa,
+    dnevnik.Datum AS DatumDnevnika,
+    dnevnik.TipPromene AS TipPromeneDnevnika,
+    dnevnik.BrojKalkulacije AS BrojKalkulacijeDnevnika,
+    dnevnik.IDObjekat AS IDObjekatDnevnik
+FROM tblUnosRobe AS unos
+INNER JOIN qryDnevnikPregled2020 AS dnevnik
+    ON unos.IDDnevnik = dnevnik.IDDnevnik
+WHERE Nz(dnevnik.BrojKalkulacije, '') <> 'KOREKCIJA';

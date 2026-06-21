@@ -1,13 +1,13 @@
 SELECT
-    n.IDArtikal,
-    n.Kolicina,
-    n.StaraCena,
-    n.NovaCena,
-    n.IDDnevnik,
-    d.Datum,
-    d.TipPromene,
-    d.BrojKalkulacije,
-    d.IDObjekat
-FROM tblNivelacije AS n
-INNER JOIN qryDnevnikPregled2020 AS d
-    ON n.IDDnevnik = d.IDDnevnik;
+    nivelacije.IDArtikal,
+    nivelacije.Kolicina,
+    nivelacije.StaraCena,
+    nivelacije.NovaCena,
+    nivelacije.IDDnevnik AS IDDnevnikNivelacije,
+    dnevnik.Datum AS DatumDnevnika,
+    dnevnik.TipPromene AS TipPromeneDnevnika,
+    dnevnik.BrojKalkulacije AS BrojKalkulacijeDnevnika,
+    dnevnik.IDObjekat AS IDObjekatDnevnik
+FROM tblNivelacije AS nivelacije
+INNER JOIN qryDnevnikPregled2020 AS dnevnik
+    ON nivelacije.IDDnevnik = dnevnik.IDDnevnik;

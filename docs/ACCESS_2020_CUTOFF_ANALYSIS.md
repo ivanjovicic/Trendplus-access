@@ -20,12 +20,14 @@ Recommendation in one sentence:
 
 Related repo artifacts:
 
+- [README.md](README.md)
 - [ACCESS_OBJECT_CLASSIFICATION.md](ACCESS_OBJECT_CLASSIFICATION.md)
 - [ACCESS_2020_TEST_MATRIX.md](ACCESS_2020_TEST_MATRIX.md)
 - [ACCESS_2020_GO_NO_GO.md](ACCESS_2020_GO_NO_GO.md)
 - [BACKUP_AND_ROLLBACK.md](BACKUP_AND_ROLLBACK.md)
-- [sql/reporting-2020](../sql/reporting-2020/)
-- [sql/audit](../sql/audit/)
+- [sql/README.md](../sql/README.md)
+- [sql/reporting-2020/README.md](../sql/reporting-2020/README.md)
+- [sql/audit/README.md](../sql/audit/README.md)
 
 ### Odluka o spremnosti
 

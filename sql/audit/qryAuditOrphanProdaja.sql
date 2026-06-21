@@ -1,10 +1,10 @@
 SELECT
-    p.IDArtikal,
-    p.Kolicina,
-    p.ProdajnaCena,
-    p.IDObjekat,
-    p.IDDnevnik
-FROM tblProdaja AS p
-LEFT JOIN tblDnevnikPromena AS d
-    ON p.IDDnevnik = d.IDDnevnik
-WHERE d.IDDnevnik Is Null;
+    prodaja.IDArtikal,
+    prodaja.Kolicina,
+    prodaja.ProdajnaCena,
+    prodaja.IDObjekat AS IDObjekatProdaja,
+    prodaja.IDDnevnik AS IDDnevnikProdaja
+FROM tblProdaja AS prodaja
+LEFT JOIN tblDnevnikPromena AS dnevnik
+    ON prodaja.IDDnevnik = dnevnik.IDDnevnik
+WHERE dnevnik.IDDnevnik Is Null;

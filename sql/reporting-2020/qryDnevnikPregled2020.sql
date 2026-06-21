@@ -1,12 +1,11 @@
 SELECT
-    d.IDDnevnik,
-    d.RedniBroj,
-    d.Datum,
-    d.BrojKalkulacije,
-    d.TipPromene,
-    d.IznosPromene,
-    d.IDObjekat,
-    d.Napomena
-FROM tblDnevnikPromena AS d
-WHERE d.Datum >= DateSerial(2020, 1, 1);
-
+    dnevnik.IDDnevnik,
+    dnevnik.RedniBroj,
+    dnevnik.Datum,
+    dnevnik.BrojKalkulacije,
+    dnevnik.TipPromene,
+    dnevnik.IznosPromene,
+    dnevnik.IDObjekat,
+    dnevnik.Napomena
+FROM tblDnevnikPromena AS dnevnik
+WHERE dnevnik.Datum >= DateSerial(2020, 1, 1);
