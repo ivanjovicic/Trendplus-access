@@ -2,11 +2,12 @@
 
 Status: preparation document for the 2020 cutoff work.
 
-This document is intentionally operational and read-only in spirit:
+This file is documentation-only and deliberately read-only in spirit:
 
-- do not use it to modify the MDB in place
-- do not use it to run destructive cleanup
-- do not use it as a substitute for source export or UAT
+- never use it to modify the MDB in place
+- never use it to run destructive cleanup
+- never use it as a substitute for source export or UAT
+- never work on the original MDB as the execution target
 
 ## Purpose
 
@@ -14,7 +15,7 @@ The goal is to make every future change to the cutoff plan reversible without re
 
 Rollback must be possible by:
 
-- switching back to the previous query/form/report source
+- switching back to the previous query, form, or report source
 - disabling the new entry point
 - leaving base tables untouched
 
@@ -28,8 +29,9 @@ Record the actual files used for the work package here:
 | --- | --- |
 | Working source file | `Trend plus.mdb` |
 | Archive/scoped file | `TRENDPLUS.accdb` |
-| Backup file name | `TBD` |
-| Backup location | `TBD` |
+| Original file name | `Trend plus.mdb` |
+| Backup file name pattern | `Trend plus_YYYY-MM-DD_HHMMSS_pre-cutoff-backup.mdb` |
+| Backup location | `backups\cutoff\` under the repo root, or another approved out-of-tree location |
 | Backup created at | `TBD` |
 | Backup created by | `TBD` |
 
@@ -41,7 +43,7 @@ Before any implementation work:
 2. Copy the source MDB to a separate backup location.
 3. Verify the backup opens.
 4. Record the file size.
-5. Record the SHA-256 hash.
+5. Record the SHA-256 hash for both original and backup.
 6. Record the exact timestamp of the copy.
 7. Store the backup path in a place that will not be overwritten by the Access work copy.
 
@@ -52,26 +54,30 @@ Use a timestamped name that clearly identifies the source and the purpose.
 Example pattern:
 
 ```text
-Trend plus_2026-06-21_pre-cutoff-backup.mdb
+Trend plus_2026-06-21_153000_pre-cutoff-backup.mdb
 ```
 
 If a second backup is made after the source export, use a new timestamp instead of overwriting the first copy.
 
 ## SHA-256 Recording
 
-Record the hash value in this table after the backup is created.
+Record the hash values in this table after the backup is created.
 
 | Field | Value |
 | --- | --- |
-| File | `TBD` |
-| SHA-256 | `TBD` |
-| Size | `TBD` |
+| Source file | `Trend plus.mdb` |
+| Source SHA-256 | `TBD` |
+| Backup file | `TBD` |
+| Backup SHA-256 | `TBD` |
+| Source size | `TBD` |
+| Backup size | `TBD` |
 | Last verified | `TBD` |
 
-Recommended command on Windows:
+Recommended commands on Windows:
 
 ```powershell
-Get-FileHash "C:\path\to\Trend plus_2026-06-21_pre-cutoff-backup.mdb" -Algorithm SHA256
+Get-FileHash "C:\Users\Ivan\source\repos\Trendplus-access\Trend plus.mdb" -Algorithm SHA256
+Get-FileHash "C:\path\to\backups\cutoff\Trend plus_2026-06-21_153000_pre-cutoff-backup.mdb" -Algorithm SHA256
 ```
 
 ## Rollback Principles
@@ -124,9 +130,14 @@ After any rollback, verify:
 - the relevant forms/reports still behave as before the attempted change
 - `Query10` was not invoked
 
+## Operational Rule
+
+Never work on the original MDB.
+
+All experimentation, source export, import, and UI verification must happen against a timestamped copy created from `Trend plus.mdb`.
+
 ## Notes
 
 - This file is a preparation artifact, not an execution log.
 - Fill in the `TBD` fields when the backup is actually created.
 - Keep this file alongside the cutoff analysis and test matrix so the implementation gates remain traceable.
-
