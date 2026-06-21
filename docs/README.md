@@ -9,10 +9,10 @@ This folder collects the cutoff analysis, rollout gates, and supporting referenc
 - [ACCESS_2020_TEST_MATRIX.md](ACCESS_2020_TEST_MATRIX.md)
 - [ACCESS_2020_GO_NO_GO.md](ACCESS_2020_GO_NO_GO.md)
 - [BACKUP_AND_ROLLBACK.md](BACKUP_AND_ROLLBACK.md)
+- [SQL_IMPORT_PREP.md](SQL_IMPORT_PREP.md)
 
 ## SQL References
 
 - [sql/README.md](../sql/README.md)
 - [sql/reporting-2020/README.md](../sql/reporting-2020/README.md)
 - [sql/audit/README.md](../sql/audit/README.md)
-
