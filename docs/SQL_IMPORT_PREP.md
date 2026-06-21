@@ -30,6 +30,14 @@ This document connects the checked-in SQL proposal files with their intended Acc
 | `sql/reporting-2020/qryProdajaAnalitikaStavke2020.sql` | `qryProdajaAnalitikaStavke2020` | Enriched sales analytics line source. |
 | `sql/reporting-2020/qryProdajaPoDobavljacima2020.sql` | `qryProdajaPoDobavljacima2020` | Sales by supplier aggregate. |
 | `sql/reporting-2020/qryProdajaPoTipuObuce2020.sql` | `qryProdajaPoTipuObuce2020` | Sales by shoe type aggregate. |
+| `sql/reporting-2020/qryProdajaDobavljacArtikalDistinct2020.sql` | `qryProdajaDobavljacArtikalDistinct2020` | Supplier/article distinct helper. |
+| `sql/reporting-2020/qryProdajaTipObuceArtikalDistinct2020.sql` | `qryProdajaTipObuceArtikalDistinct2020` | Shoe type/article distinct helper. |
+| `sql/reporting-2020/qryProdajaTipObuceDobavljacDistinct2020.sql` | `qryProdajaTipObuceDobavljacDistinct2020` | Shoe type/supplier distinct helper. |
+| `sql/reporting-2020/qryProdajaDobavljacTipObuceDistinct2020.sql` | `qryProdajaDobavljacTipObuceDistinct2020` | Supplier/shoe type distinct helper. |
+| `sql/reporting-2020/qryProdajaDobavljacMesec2020.sql` | `qryProdajaDobavljacMesec2020` | Supplier monthly trend query. |
+| `sql/reporting-2020/qryProdajaTipObuceMesec2020.sql` | `qryProdajaTipObuceMesec2020` | Shoe type monthly trend query. |
+| `sql/reporting-2020/qryProdajaTopArtikliPoDobavljacu2020.sql` | `qryProdajaTopArtikliPoDobavljacu2020` | Top articles by supplier. |
+| `sql/reporting-2020/qryProdajaTopArtikliPoTipuObuce2020.sql` | `qryProdajaTopArtikliPoTipuObuce2020` | Top articles by shoe type. |
 
 ### Sales analytics audits
 
@@ -38,6 +46,8 @@ This document connects the checked-in SQL proposal files with their intended Acc
 | `sql/audit/qryAuditProdajaAnalitikaTotals2020.sql` | `qryAuditProdajaAnalitikaTotals2020` | Analytics totals parity audit. |
 | `sql/audit/qryAuditProdajaAnalitikaMissingDimensions2020.sql` | `qryAuditProdajaAnalitikaMissingDimensions2020` | Missing article/supplier/type/season/sales object/journal object audit. |
 | `sql/audit/qryAuditProdajaObjekatMismatch2020.sql` | `qryAuditProdajaObjekatMismatch2020` | Sales object mismatch audit. |
+| `sql/audit/qryAuditProdajaAnalitikaByObject2020.sql` | `qryAuditProdajaAnalitikaByObject2020` | Analytics by-object parity audit. |
+| `sql/audit/qryAuditProdajaAnalitikaByMonth2020.sql` | `qryAuditProdajaAnalitikaByMonth2020` | Analytics by-month parity audit. |
 
 ### Existing data-quality audits
 
@@ -56,10 +66,13 @@ This document connects the checked-in SQL proposal files with their intended Acc
 1. Import `qryDnevnikPregled2020` first.
 2. Import `qryProdajaPregled2020`.
 3. Import `qryProdajaAnalitikaStavke2020` after `qryProdajaPregled2020`.
-4. Import the supplier and shoe type aggregate queries.
-5. Import the sales analytics audit queries after the reporting base exists.
-6. Import the existing journal and orphan audits after the reporting base exists.
-7. Validate row counts and boundary dates before wiring any form or report.
+4. Import the distinct helper queries.
+5. Import the supplier and shoe type aggregate queries.
+6. Import the monthly trend queries.
+7. Import the top article queries.
+8. Import the sales analytics audit queries after the reporting base exists.
+9. Import the existing journal and orphan audits after the reporting base exists.
+10. Validate row counts and boundary dates before wiring any form or report.
 
 ## Access Import Notes
 

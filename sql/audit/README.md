@@ -1,7 +1,7 @@
 # Audit SQL
 
 These files are read-only audit proposals for the 2020 cutoff plan.
-They also include the sales analytics parity and data-quality checks.
+They also include the sales analytics parity, by-object, by-month, and data-quality checks.
 
 - Use them in a working copy of the MDB, not as direct production changes.
 - They are intended to document counts, orphan rows, and reconciliation checks.

@@ -5,6 +5,7 @@ SELECT
     prodaja.BrojKalkulacijeDnevnika,
     prodaja.IDObjekatProdaja,
     prodaja.IDObjekatDnevnik,
+    objekatProdaja.Ime AS ObjekatProdaja,
     objekatDnevnik.Ime AS ObjekatDnevnik,
     prodaja.IDArtikal,
     artikli.PLU,
@@ -22,11 +23,15 @@ SELECT
     IIf(artikli.IDDobavljac Is Null, True, False) AS MissingDobavljac,
     IIf(artikli.IDTipObuce Is Null, True, False) AS MissingTipObuce,
     IIf(artikli.IDSezona Is Null, True, False) AS MissingSezona,
-    IIf(prodaja.IDObjekatProdaja Is Null, True, False) AS MissingObjekatProdaja,
+    IIf(objekatProdaja.IDObjekat Is Null, True, False) AS MissingObjekatProdaja,
     IIf(objekatDnevnik.IDObjekat Is Null, True, False) AS MissingObjekatDnevnik,
-    IIf(prodaja.IDObjekatProdaja <> prodaja.IDObjekatDnevnik, True, False) AS ObjekatMismatch
+    IIf(
+        Nz(prodaja.IDObjekatProdaja, -999999) <> Nz(prodaja.IDObjekatDnevnik, -999999),
+        True,
+        False
+    ) AS ObjekatMismatch
 FROM
-    (((((qryProdajaPregled2020 AS prodaja
+    ((((((qryProdajaPregled2020 AS prodaja
     LEFT JOIN tblArtikli AS artikli
         ON prodaja.IDArtikal = artikli.IDArtikal)
     LEFT JOIN tblDobavljaci AS dobavljaci
@@ -35,5 +40,7 @@ FROM
         ON artikli.IDTipObuce = tipObuce.IDTipObuce)
     LEFT JOIN tblSezona AS sezone
         ON artikli.IDSezona = sezone.IDSezona)
+    LEFT JOIN tblObjekat AS objekatProdaja
+        ON prodaja.IDObjekatProdaja = objekatProdaja.IDObjekat)
     LEFT JOIN tblObjekat AS objekatDnevnik
-        ON prodaja.IDObjekatDnevnik = objekatDnevnik.IDObjekat;
+        ON prodaja.IDObjekatDnevnik = objekatDnevnik.IDObjekat);

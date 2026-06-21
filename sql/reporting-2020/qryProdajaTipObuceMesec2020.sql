@@ -1,6 +1,8 @@
 SELECT
-    s.IDDobavljac,
-    s.Dobavljac,
+    Year(s.DatumDnevnika) AS Godina,
+    Month(s.DatumDnevnika) AS Mesec,
+    s.IDTipObuce,
+    s.TipObuce,
     Count(s.IDDnevnikProdaja) AS BrojStavki,
     Sum(Nz(s.Kolicina, 0)) AS UkupnoKomada,
     Sum(Nz(s.IznosProdaje, 0)) AS UkupanPromet,
@@ -8,13 +10,15 @@ SELECT
         Sum(Nz(s.Kolicina, 0)) = 0,
         Null,
         Sum(Nz(s.IznosProdaje, 0)) / Sum(Nz(s.Kolicina, 0))
-    ) AS ProsecnaCenaPoKomadu,
-    Min(s.DatumDnevnika) AS PrvaProdaja,
-    Max(s.DatumDnevnika) AS PoslednjaProdaja
+    ) AS ProsecnaCenaPoKomadu
 FROM qryProdajaAnalitikaStavke2020 AS s
 GROUP BY
-    s.IDDobavljac,
-    s.Dobavljac
+    Year(s.DatumDnevnika),
+    Month(s.DatumDnevnika),
+    s.IDTipObuce,
+    s.TipObuce
 ORDER BY
-    Sum(Nz(s.IznosProdaje, 0)) DESC,
-    s.Dobavljac;
+    Year(s.DatumDnevnika),
+    Month(s.DatumDnevnika),
+    s.IDTipObuce,
+    s.TipObuce;

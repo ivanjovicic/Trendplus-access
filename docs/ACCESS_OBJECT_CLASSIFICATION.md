@@ -47,9 +47,19 @@ Nothing in here authorizes UI changes, MDB edits, or destructive maintenance.
 | `qryProdajaAnalitikaStavke2020` | `FILTER_2020_SAFE` | Read-only analytics line source built on `qryProdajaPregled2020`. |
 | `qryProdajaPoDobavljacima2020` | `FILTER_2020_SAFE` | Read-only supplier aggregate. |
 | `qryProdajaPoTipuObuce2020` | `FILTER_2020_SAFE` | Read-only shoe type aggregate. |
+| `qryProdajaDobavljacArtikalDistinct2020` | `FILTER_2020_SAFE` | Supplier/article distinct helper. |
+| `qryProdajaTipObuceArtikalDistinct2020` | `FILTER_2020_SAFE` | Shoe type/article distinct helper. |
+| `qryProdajaTipObuceDobavljacDistinct2020` | `FILTER_2020_SAFE` | Shoe type/supplier distinct helper. |
+| `qryProdajaDobavljacTipObuceDistinct2020` | `FILTER_2020_SAFE` | Supplier/shoe type distinct helper. |
+| `qryProdajaDobavljacMesec2020` | `FILTER_2020_SAFE` | Supplier monthly trend query. |
+| `qryProdajaTipObuceMesec2020` | `FILTER_2020_SAFE` | Shoe type monthly trend query. |
+| `qryProdajaTopArtikliPoDobavljacu2020` | `FILTER_2020_SAFE` | Top articles by supplier. |
+| `qryProdajaTopArtikliPoTipuObuce2020` | `FILTER_2020_SAFE` | Top articles by shoe type. |
 | `qryAuditProdajaAnalitikaTotals2020` | `FILTER_2020_SAFE` | Read-only analytics totals parity audit. |
 | `qryAuditProdajaAnalitikaMissingDimensions2020` | `FILTER_2020_SAFE` | Read-only missing dimension audit. |
 | `qryAuditProdajaObjekatMismatch2020` | `FILTER_2020_SAFE` | Read-only object mismatch audit. |
+| `qryAuditProdajaAnalitikaByObject2020` | `FILTER_2020_SAFE` | Read-only analytics by-object parity audit. |
+| `qryAuditProdajaAnalitikaByMonth2020` | `FILTER_2020_SAFE` | Read-only analytics by-month parity audit. |
 | `qryUnosRobePregled2020` | `FILTER_2020_SAFE` | New read-only clone for receipt review. |
 | `qryPrenosRobePregled2020` | `FILTER_2020_SAFE` | New read-only clone for transfer review. |
 | `qryPovratnicePregled2020` | `FILTER_2020_SAFE` | New read-only clone for returns review. |

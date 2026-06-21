@@ -1,4 +1,6 @@
 SELECT
+    Year(s.DatumDnevnika) AS Godina,
+    Month(s.DatumDnevnika) AS Mesec,
     s.IDDobavljac,
     s.Dobavljac,
     Count(s.IDDnevnikProdaja) AS BrojStavki,
@@ -8,13 +10,15 @@ SELECT
         Sum(Nz(s.Kolicina, 0)) = 0,
         Null,
         Sum(Nz(s.IznosProdaje, 0)) / Sum(Nz(s.Kolicina, 0))
-    ) AS ProsecnaCenaPoKomadu,
-    Min(s.DatumDnevnika) AS PrvaProdaja,
-    Max(s.DatumDnevnika) AS PoslednjaProdaja
+    ) AS ProsecnaCenaPoKomadu
 FROM qryProdajaAnalitikaStavke2020 AS s
 GROUP BY
+    Year(s.DatumDnevnika),
+    Month(s.DatumDnevnika),
     s.IDDobavljac,
     s.Dobavljac
 ORDER BY
-    Sum(Nz(s.IznosProdaje, 0)) DESC,
+    Year(s.DatumDnevnika),
+    Month(s.DatumDnevnika),
+    s.IDDobavljac,
     s.Dobavljac;

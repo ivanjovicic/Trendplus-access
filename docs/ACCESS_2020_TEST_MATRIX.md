@@ -45,6 +45,14 @@ The goal is to prove the cutoff, preserve historical meaning where needed, and b
 | T23 | Analytics object mismatch | Run `qryAuditProdajaObjekatMismatch2020`. | Returns sales rows where sales object and journal object differ or one side is missing. |
 | T24 | Supplier analytics | Run `qryProdajaPoDobavljacima2020`. | Returns grouped supplier analytics with explicit columns and no row loss from missing dimensions. |
 | T25 | Shoe type analytics | Run `qryProdajaPoTipuObuce2020`. | Returns grouped shoe type analytics with explicit columns and no row loss from missing dimensions. |
+| T26 | Supplier/article distinct helper | Run `qryProdajaDobavljacArtikalDistinct2020`. | Returns unique supplier/article combinations for distinct-count support. |
+| T27 | Shoe type/article distinct helper | Run `qryProdajaTipObuceArtikalDistinct2020`. | Returns unique shoe type/article combinations for distinct-count support. |
+| T28 | Supplier monthly trend | Run `qryProdajaDobavljacMesec2020`. | Returns monthly supplier totals that reconcile to the same grand total. |
+| T29 | Shoe type monthly trend | Run `qryProdajaTipObuceMesec2020`. | Returns monthly shoe type totals that reconcile to the same grand total. |
+| T30 | Top article by supplier | Run `qryProdajaTopArtikliPoDobavljacu2020`. | Returns supplier/article drilldown rows with explicit totals. |
+| T31 | Top article by shoe type | Run `qryProdajaTopArtikliPoTipuObuce2020`. | Returns shoe type/article drilldown rows with explicit totals. |
+| T32 | Object parity | Run `qryAuditProdajaAnalitikaByObject2020`. | Object breakdown totals reconcile to the same grand total. |
+| T33 | Month parity | Run `qryAuditProdajaAnalitikaByMonth2020`. | Month breakdown totals reconcile to the same grand total. |
 
 ## Expected Year Counts
 
@@ -83,5 +91,6 @@ The goal is to prove the cutoff, preserve historical meaning where needed, and b
 - Orphan rows remain audited, not silently reassigned.
 - Stock/card/popis objects are not blanket-cut off.
 - Sales analytics stays read-only and is validated against the sales review base query.
+- Helper, trend, and top-article analytics queries are read-only and reconcile to the same grand total.
 - No existing base table content changes.
 - `Query10` stays isolated from all test flows.

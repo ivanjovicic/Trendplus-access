@@ -1,6 +1,9 @@
 SELECT
-    s.IDDobavljac,
-    s.Dobavljac,
+    s.IDTipObuce,
+    s.TipObuce,
+    s.IDArtikal,
+    s.PLU,
+    s.Artikal,
     Count(s.IDDnevnikProdaja) AS BrojStavki,
     Sum(Nz(s.Kolicina, 0)) AS UkupnoKomada,
     Sum(Nz(s.IznosProdaje, 0)) AS UkupanPromet,
@@ -13,8 +16,12 @@ SELECT
     Max(s.DatumDnevnika) AS PoslednjaProdaja
 FROM qryProdajaAnalitikaStavke2020 AS s
 GROUP BY
-    s.IDDobavljac,
-    s.Dobavljac
+    s.IDTipObuce,
+    s.TipObuce,
+    s.IDArtikal,
+    s.PLU,
+    s.Artikal
 ORDER BY
+    s.IDTipObuce,
     Sum(Nz(s.IznosProdaje, 0)) DESC,
-    s.Dobavljac;
+    s.Artikal;

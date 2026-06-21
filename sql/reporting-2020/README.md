@@ -1,7 +1,7 @@
 # Reporting 2020 SQL
 
 These files are read-only SQL proposals for the 2020 cutoff plan.
-They include the core 2020+ reporting layer and the read-only sales analytics extension built on top of `qryProdajaPregled2020`.
+They include the core 2020+ reporting layer, sales analytics extension, helper distinct queries, monthly trend queries, and top-article drilldown queries built on top of `qryProdajaPregled2020`.
 
 - Use them as source material for a copy of the MDB, not on the production source.
 - They are meant for new reporting queries only.
