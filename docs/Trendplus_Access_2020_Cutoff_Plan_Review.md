@@ -2,7 +2,7 @@
 
 > Status 2026-06-21: nalazi iz ovog review-a ugrađeni su u kanonski dokument `ACCESS_2020_CUTOFF_ANALYSIS.md`. Naknadna DAO/Git provera dodala je važan nalaz: oba Access fajla jesu na `main`, ali `TRENDPLUS.accdb` sadrži samo podatke do `2019-11-13` i ima 0 journal redova od 2020, dok MDB ima podatke do `2026-04-05`. Zbog toga je potvrda MDB-a kao source of truth obavezan prvi gate.
 
-Ovaj dokument ostaje review trag. Za implementacioni redosled i go/no-go kriterijume merodavan je kanonski dokument.
+Ovaj dokument ostaje review trag. Za implementacioni redosled i go/no-go kriterijume merodavan je kanonski dokument, a repo sada ima i zasebne artefakte za klasifikaciju objekata, test matricu, go/no-go i read-only SQL predloge.
 
 ## Naknadna verifikacija ocene
 

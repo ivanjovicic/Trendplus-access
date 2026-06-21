@@ -18,6 +18,14 @@ Recommendation in one sentence:
 
 > Napraviti novi read-only reporting/query sloj za regularne journal-driven preglede sa `Datum >= DateSerial(2020,1,1)`, ne menjati base tabele ni postojece query-je, ne dirati lager/karticu/popise dok se ne klasifikuju, i obezbediti archive/full-history putanju pre prebacivanja UI-a.
 
+Related repo artifacts:
+
+- [ACCESS_OBJECT_CLASSIFICATION.md](ACCESS_OBJECT_CLASSIFICATION.md)
+- [ACCESS_2020_TEST_MATRIX.md](ACCESS_2020_TEST_MATRIX.md)
+- [ACCESS_2020_GO_NO_GO.md](ACCESS_2020_GO_NO_GO.md)
+- [sql/reporting-2020](../sql/reporting-2020/)
+- [sql/audit](../sql/audit/)
+
 ### Odluka o spremnosti
 
 | Stavka | Status |
