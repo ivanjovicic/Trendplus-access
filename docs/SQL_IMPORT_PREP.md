@@ -12,6 +12,8 @@ This document connects the checked-in SQL proposal files with their intended Acc
 
 ## Query Map
 
+### Core cutoff reporting
+
 | SQL file | Intended Access object | Purpose |
 | --- | --- | --- |
 | `sql/reporting-2020/qryDnevnikPregled2020.sql` | `qryDnevnikPregled2020` | Central 2020+ journal header query. |
@@ -20,6 +22,27 @@ This document connects the checked-in SQL proposal files with their intended Acc
 | `sql/reporting-2020/qryPrenosRobePregled2020.sql` | `qryPrenosRobePregled2020` | Transfer review query. |
 | `sql/reporting-2020/qryPovratnicePregled2020.sql` | `qryPovratnicePregled2020` | Returns review query. |
 | `sql/reporting-2020/qryNivelacijePregled2020.sql` | `qryNivelacijePregled2020` | Leveling review query. |
+
+### Sales analytics extension
+
+| SQL file | Intended Access object | Purpose |
+| --- | --- | --- |
+| `sql/reporting-2020/qryProdajaAnalitikaStavke2020.sql` | `qryProdajaAnalitikaStavke2020` | Enriched sales analytics line source. |
+| `sql/reporting-2020/qryProdajaPoDobavljacima2020.sql` | `qryProdajaPoDobavljacima2020` | Sales by supplier aggregate. |
+| `sql/reporting-2020/qryProdajaPoTipuObuce2020.sql` | `qryProdajaPoTipuObuce2020` | Sales by shoe type aggregate. |
+
+### Sales analytics audits
+
+| SQL file | Intended Access object | Purpose |
+| --- | --- | --- |
+| `sql/audit/qryAuditProdajaAnalitikaTotals2020.sql` | `qryAuditProdajaAnalitikaTotals2020` | Analytics totals parity audit. |
+| `sql/audit/qryAuditProdajaAnalitikaMissingDimensions2020.sql` | `qryAuditProdajaAnalitikaMissingDimensions2020` | Missing article/supplier/type/season/sales object/journal object audit. |
+| `sql/audit/qryAuditProdajaObjekatMismatch2020.sql` | `qryAuditProdajaObjekatMismatch2020` | Sales object mismatch audit. |
+
+### Existing data-quality audits
+
+| SQL file | Intended Access object | Purpose |
+| --- | --- | --- |
 | `sql/audit/qryAuditDnevnikCountByYear.sql` | `qryAuditDnevnikCountByYear` | Journal year audit. |
 | `sql/audit/qryAuditDnevnikCountByTipPromene.sql` | `qryAuditDnevnikCountByTipPromene` | Journal type audit. |
 | `sql/audit/qryAuditOrphanProdaja.sql` | `qryAuditOrphanProdaja` | Sales orphan audit. |
@@ -31,9 +54,12 @@ This document connects the checked-in SQL proposal files with their intended Acc
 ## Recommended Import Order
 
 1. Import `qryDnevnikPregled2020` first.
-2. Import the remaining reporting queries.
-3. Import the audit queries after the reporting base exists.
-4. Validate row counts and boundary dates before wiring any form or report.
+2. Import `qryProdajaPregled2020`.
+3. Import `qryProdajaAnalitikaStavke2020` after `qryProdajaPregled2020`.
+4. Import the supplier and shoe type aggregate queries.
+5. Import the sales analytics audit queries after the reporting base exists.
+6. Import the existing journal and orphan audits after the reporting base exists.
+7. Validate row counts and boundary dates before wiring any form or report.
 
 ## Access Import Notes
 
@@ -42,6 +68,7 @@ This document connects the checked-in SQL proposal files with their intended Acc
 - Do not import or run `Query10`.
 - Do not change forms or reports until the query parity checks pass.
 - If a query name collides with an existing Access object, stop and resolve the collision before proceeding.
+- Treat the sales analytics extension as read-only proposal SQL until the existing gates and parity checks pass.
 
 ## Practical Check
 
@@ -51,4 +78,3 @@ Before any UI work, verify:
 - the SQL file content still matches the repository version
 - the classification doc still marks the target as allowed
 - the go/no-go doc still keeps UI changes blocked
-

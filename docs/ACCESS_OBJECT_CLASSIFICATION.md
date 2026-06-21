@@ -44,6 +44,12 @@ Nothing in here authorizes UI changes, MDB edits, or destructive maintenance.
 | --- | --- | --- |
 | `qryDnevnikPregled2020` | `FILTER_2020_SAFE` | New central reporting query for `Datum >= DateSerial(2020,1,1)`. |
 | `qryProdajaPregled2020` | `FILTER_2020_SAFE` | New read-only clone for sales review. |
+| `qryProdajaAnalitikaStavke2020` | `FILTER_2020_SAFE` | Read-only analytics line source built on `qryProdajaPregled2020`. |
+| `qryProdajaPoDobavljacima2020` | `FILTER_2020_SAFE` | Read-only supplier aggregate. |
+| `qryProdajaPoTipuObuce2020` | `FILTER_2020_SAFE` | Read-only shoe type aggregate. |
+| `qryAuditProdajaAnalitikaTotals2020` | `FILTER_2020_SAFE` | Read-only analytics totals parity audit. |
+| `qryAuditProdajaAnalitikaMissingDimensions2020` | `FILTER_2020_SAFE` | Read-only missing dimension audit. |
+| `qryAuditProdajaObjekatMismatch2020` | `FILTER_2020_SAFE` | Read-only object mismatch audit. |
 | `qryUnosRobePregled2020` | `FILTER_2020_SAFE` | New read-only clone for receipt review. |
 | `qryPrenosRobePregled2020` | `FILTER_2020_SAFE` | New read-only clone for transfer review. |
 | `qryPovratnicePregled2020` | `FILTER_2020_SAFE` | New read-only clone for returns review. |
@@ -74,6 +80,8 @@ Nothing in here authorizes UI changes, MDB edits, or destructive maintenance.
 | Object | Class | Notes |
 | --- | --- | --- |
 | `frmStatistika` | `UNKNOWN_REVIEW_REQUIRED` | Candidate for `FILTER_2020_SAFE` after export and parity tests. |
+| `frmProdajaPoDobavljacima` | `UNKNOWN_REVIEW_REQUIRED` | Proposed read-only supplier analytics form. |
+| `frmProdajaPoTipuObuce` | `UNKNOWN_REVIEW_REQUIRED` | Proposed read-only shoe type analytics form. |
 | `frmDnevnik` | `UNKNOWN_REVIEW_REQUIRED` | Journal browser/report launcher. |
 | `frmPregled` | `UNKNOWN_REVIEW_REQUIRED` | Exact source not confirmed. |
 | `frmKartica` | `UNKNOWN_REVIEW_REQUIRED` | Likely `OPENING_BALANCE_REQUIRED` or `FULL_HISTORY_REQUIRED`. |
@@ -134,4 +142,3 @@ Nothing in here authorizes UI changes, MDB edits, or destructive maintenance.
 - `TRENDPLUS.accdb` is an `ARCHIVE_ONLY` candidate until business confirms otherwise.
 - `Query10` is intentionally treated as destructive and blocked from any cutoff work.
 - Any object still marked `UNKNOWN_REVIEW_REQUIRED` must not be rewired before source export and sign-off.
-

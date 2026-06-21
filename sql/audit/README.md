@@ -1,6 +1,7 @@
 # Audit SQL
 
 These files are read-only audit proposals for the 2020 cutoff plan.
+They also include the sales analytics parity and data-quality checks.
 
 - Use them in a working copy of the MDB, not as direct production changes.
 - They are intended to document counts, orphan rows, and reconciliation checks.
@@ -8,3 +9,4 @@ These files are read-only audit proposals for the 2020 cutoff plan.
 - They do not authorize any destructive query, including `Query10`.
 - See [../../docs/SQL_IMPORT_PREP.md](../../docs/SQL_IMPORT_PREP.md) for the file-to-object mapping and import order.
 - Keep each file stem aligned with its intended Access query name.
+- See [Sales by Supplier and Shoe Type Plan](../../docs/SALES_BY_SUPPLIER_AND_SHOE_TYPE_PLAN.md) for the analytics audit scope.

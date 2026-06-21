@@ -40,6 +40,11 @@ The goal is to prove the cutoff, preserve historical meaning where needed, and b
 | T18 | Popis semantics | Review `rptPopis` and `rptPopisProslost`. | Classified before any rewrite; no blanket cutoff. |
 | T19 | Archive path | Exercise archive/full-history access. | A separate archive path is available before any default UI switch. |
 | T20 | Data safety | Validate that no base table rows were deleted or modified by the read-only plan. | All data remains unchanged. |
+| T21 | Analytics totals | Run `qryAuditProdajaAnalitikaTotals2020`. | Base sales totals, analytics totals, supplier totals, and shoe type totals match. |
+| T22 | Analytics dimensions | Run `qryAuditProdajaAnalitikaMissingDimensions2020`. | Returns counts for missing article, supplier, type, season, sales object, journal object, null quantity, null price, negative quantity, and negative price rows. |
+| T23 | Analytics object mismatch | Run `qryAuditProdajaObjekatMismatch2020`. | Returns sales rows where sales object and journal object differ or one side is missing. |
+| T24 | Supplier analytics | Run `qryProdajaPoDobavljacima2020`. | Returns grouped supplier analytics with explicit columns and no row loss from missing dimensions. |
+| T25 | Shoe type analytics | Run `qryProdajaPoTipuObuce2020`. | Returns grouped shoe type analytics with explicit columns and no row loss from missing dimensions. |
 
 ## Expected Year Counts
 
@@ -77,5 +82,6 @@ The goal is to prove the cutoff, preserve historical meaning where needed, and b
 - The cutoff is applied only in read-only reporting queries.
 - Orphan rows remain audited, not silently reassigned.
 - Stock/card/popis objects are not blanket-cut off.
+- Sales analytics stays read-only and is validated against the sales review base query.
 - No existing base table content changes.
 - `Query10` stays isolated from all test flows.

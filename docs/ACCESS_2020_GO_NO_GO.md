@@ -49,6 +49,7 @@ Allowed:
 - read-only SQL proposal files
 - audit query specs
 - classification and test artifacts
+- sales analytics extension docs and read-only SQL proposals
 
 Blocked:
 
@@ -64,4 +65,3 @@ Blocked:
 - Read-only planning work: allowed
 - MDB or UI implementation: blocked
 - Production rollout: blocked
-
